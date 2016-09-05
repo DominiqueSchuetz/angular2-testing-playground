@@ -1,11 +1,13 @@
-/* tslint:disable:no-unused-variable */
-
-import { TestBed, async } from '@angular/core/testing';
 import { TodoComponent } from './todo.component';
+import { Todo } from '../shared/todo';
 
-describe('Component: Todo', () => {
-  it('should create an instance', () => {
-    let component = new TodoComponent();
-    expect(component).toBeTruthy();
+describe('When a todo is completed', () => {
+  it('completes the todo', () => {
+    let todoComponnet = new TodoComponent();
+
+    todoComponnet.todo = new Todo('Buy milk');
+    todoComponnet.toggleCompleted({target: { checked: true }});
+
+    expect(todoComponnet.todo.isCompleted).toBeTruthy();
   });
 });
