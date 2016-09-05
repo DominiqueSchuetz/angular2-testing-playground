@@ -11,7 +11,9 @@ import { Todo } from '../shared/todo';
       <span
         [class.completed]="todo.isCompleted"
         [textContent]="todo.title"></span>
-      <button (click)="archive()">Archive</button>
+      <button
+        *ngIf="!todo.isArchived"
+        (click)="archive()">Archive</button>
     </div>
   `,
   styles: [`
@@ -30,6 +32,7 @@ export class TodoComponent {
   }
 
   archive() {
+    this.todo.isArchived = true;
     this.archived.emit(this.todo);
   }
 }
