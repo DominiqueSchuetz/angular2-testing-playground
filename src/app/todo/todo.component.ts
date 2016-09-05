@@ -5,13 +5,26 @@ import { Todo } from '../shared/todo';
   selector: 'app-todo',
   template: `
     <div>
-      <input type="checkbox" [(ngModel)]="todo.isCompleted">
-      <span [textContent]="todo.title"></span>
+      <input
+        type="checkbox"
+        (change)="toggleCompleted($event)">
+      <span
+        [class.completed]="todo.isCompleted"
+        [textContent]="todo.title"></span>
     </div>
   `,
-  styleUrls: ['./todo.component.css']
+  styles: [`
+    .completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+  `]
 })
 export class TodoComponent {
   @Input() todo: Todo;
   @Output() archived: EventEmitter<Todo> = new EventEmitter();
+
+  toggleCompleted(checkbox) {
+    this.todo.isCompleted = checkbox.target.checked;
+  }
 }
