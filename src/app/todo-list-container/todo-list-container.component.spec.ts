@@ -28,20 +28,4 @@ describe('[Integration] When a todo is archived', () => {
 
     archiveButton = fixture.debugElement.query(e => e.nativeElement.textContent === 'Archive');
   }));
-
-  it('adds a Todo to list "archive"', () => {
-    archiveButton.nativeElement.click();
-
-    fixture.detectChanges();
-
-    expect(containerComponent.archive.length).toBe(1);
-  });
-
-  it('removes the Todo from list "actual"', () => {
-  archiveButton.nativeElement.click();
-
-  fixture.detectChanges();
-
-  expect(containerComponent.actual.length).toBe(0);
-  });
 });
