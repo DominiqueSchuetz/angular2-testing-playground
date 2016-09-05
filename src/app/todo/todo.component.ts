@@ -11,6 +11,7 @@ import { Todo } from '../shared/todo';
       <span
         [class.completed]="todo.isCompleted"
         [textContent]="todo.title"></span>
+      <button (click)="archive()">Archive</button>
     </div>
   `,
   styles: [`
@@ -26,5 +27,9 @@ export class TodoComponent {
 
   toggleCompleted(checkbox) {
     this.todo.isCompleted = checkbox.target.checked;
+  }
+
+  archive() {
+    this.archived.emit(this.todo);
   }
 }
