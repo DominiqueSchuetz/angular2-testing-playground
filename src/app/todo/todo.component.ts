@@ -7,6 +7,7 @@ import { Todo } from '../shared/todo';
     <div>
       <input
         type="checkbox"
+        [checked]="todo.isCompleted"
         (change)="toggleCompleted($event)">
       <span
         [class.completed]="todo.isCompleted"
